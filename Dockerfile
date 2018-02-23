@@ -16,5 +16,5 @@ VOLUME /wgrdata
 
 EXPOSE 55002
 
-CMD ["wagerrd", "-datadir /wgrdata", "-printtoconsole"]
+CMD ["wagerrd", "-datadir=/wgrdata", "-printtoconsole"]
 
