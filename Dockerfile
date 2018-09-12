@@ -1,13 +1,14 @@
 FROM debian:stable-slim
 
 LABEL maintainer="lukogex"
+ARG version
 
 RUN apt-get update \
       && apt-get install -y --no-install-recommends ca-certificates wget \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://github.com/wagerr/wagerr/releases/download/1.5.0/wagerr-1.5.0-x86_64-linux-gnu.tar.gz \
+RUN wget https://github.com/wagerr/wagerr/releases/download/v${version}/wagerr-${version}-x86_64-linux-gnu.tar.gz \
       && tar xzf wagerr*.tar.gz -C /usr/local/bin --strip-components 2 \
       && rm wagerr*.tar.gz
 
