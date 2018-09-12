@@ -2,6 +2,7 @@ FROM debian:stable-slim
 
 LABEL maintainer="lukogex"
 ARG version
+ARG uid
 
 RUN apt-get update \
       && apt-get install -y --no-install-recommends ca-certificates wget \
@@ -12,7 +13,7 @@ RUN wget https://github.com/wagerr/wagerr/releases/download/v${version}/wagerr-$
       && tar xzf wagerr*.tar.gz -C /usr/local/bin --strip-components 2 \
       && rm wagerr*.tar.gz
 
-RUN useradd -d /home/wagerr -ms /bin/bash wagerr
+RUN useradd -u ${uid} -d /home/wagerr -rm wagerr
 USER wagerr
 WORKDIR /home/wagerr
 
